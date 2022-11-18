@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH --partition=normal
+#SBATCH --job-name=trim_galore
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --array=0-3
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=20GB
+#SBATCH -t 14:00:00
+
+ARRAY=(WT_18DAP_embryo_BSseq_rep1 WT_18DAP_embryo_BSseq_rep2 zmddm1ab_18DAP_embryo_BSseq_rep1 zmddm1ab_18DAP_embryo_BSseq_rep2)
+
+trim_galore --illumina --fastqc --paired --trim1 --clip_R1 10 --clip_R2 10 --three_prime_clip_R1 3 --three_prime_clip_R2 3 ../../Raw_Reads/BSseq_raw_data/${ARRAY[$SLURM_ARRAY_TASK_ID]}_R1.fastq.gz \
+../../Raw_Reads/BSseq_raw_data/${ARRAY[$SLURM_ARRAY_TASK_ID]}_R2.fastq.gz
