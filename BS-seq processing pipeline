@@ -30,7 +30,7 @@ trim_galore --illumina --fastqc --paired --clip_R1 10 --clip_R2 10 --three_prime
 
 ARRAY=(WT_18DAP_embryo_BSseq_rep1 WT_18DAP_embryo_BSseq_rep2 zmddm1ab_18DAP_embryo_BSseq_rep1 zmddm1ab_18DAP_embryo_BSseq_rep2)
 
-bismark -p 10 --ambig_bam ${ARRAY[$SLURM_ARRAY_TASK_ID]}_ambig.bam  --genome ~/JinchengLong/Index/Bismark_index/ -1 ../../Clean_Reads/BS_seq_published_dataset/${ARRAY[$SLURM_ARRAY_TASK_ID]}_R1_val_1.fq.gz \
+bismark -p 4 --ambig_bam ${ARRAY[$SLURM_ARRAY_TASK_ID]}_ambig.bam  --genome ~/JinchengLong/Index/Bismark_index/ -1 ../../Clean_Reads/BS_seq_published_dataset/${ARRAY[$SLURM_ARRAY_TASK_ID]}_R1_val_1.fq.gz \
 -2 ../../Clean_Reads/BS_seq_published_dataset/${ARRAY[$SLURM_ARRAY_TASK_ID]}_R2_val_2.fq.gz
 
 
